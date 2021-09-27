@@ -3,7 +3,7 @@ import React from 'react';
 const App = () => {
     return (
         <div className="map">
-            Map application
+            <p>Map application code goes here...</p>
         </div>
     );
 }

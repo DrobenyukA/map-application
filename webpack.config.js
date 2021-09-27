@@ -10,6 +10,7 @@ module.exports = {
     devServer: {
         port: 8888,
         hot: false,
+        https: true,
         client: {
             overlay: {
                 errors: true,

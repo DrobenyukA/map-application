@@ -53,8 +53,7 @@ module.exports = {
             name: 'MapApplication',
             filename: 'remoteEntry.js',
             exposes: {
-                './MapIndex': './src/index.js',
-                './Map': './src/Map/index.js'
+                './app': './src/components/Map/index.js',
             },
             shared: {
                 ...dependencies,

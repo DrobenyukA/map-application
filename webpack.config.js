@@ -1,4 +1,5 @@
 const path = require('path');
+const { dependencies } = require('./package.json');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
@@ -53,7 +54,21 @@ module.exports = {
             filename: 'remoteEntry.js',
             exposes: {
                 './MapIndex': './src/index.js',
+                './Map': './src/Map/index.js'
             },
+            shared: {
+                ...dependencies,
+                react: {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: dependencies['react']
+                },
+                'react-dom': {
+                    singleton: true,
+                    eager: true,
+                    requiredVersion: dependencies['react-dom']
+                },
+            }
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'public', 'index.html'),

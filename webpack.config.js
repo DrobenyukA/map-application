@@ -6,6 +6,7 @@ module.exports = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
         path: path.resolve(__dirname, 'build'),
+        assetModuleFilename: 'images/[hash][ext][query]',
     },
     devServer: {
         port: 8888,
@@ -19,7 +20,7 @@ module.exports = {
         },
     },
     module: {
-    rules: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
@@ -33,6 +34,14 @@ module.exports = {
                     },
                 },
             },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                type: 'asset/resource'
+            }
         ],
     },
     plugins: [

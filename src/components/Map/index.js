@@ -1,11 +1,14 @@
 import { useEffect } from 'react';
 import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet';
+import { useSelector } from 'react-redux';
 
 import './styles.css';
 
 const defaultPosition = [51.505, -0.09];
 
 const Map = ({ position = defaultPosition }) => {
+    const user = useSelector((state) => state.session.user);
+
     useEffect(() => {
         // Fixed issue with react leaflet icons
         const styles = document.createElement('link');
@@ -24,11 +27,13 @@ const Map = ({ position = defaultPosition }) => {
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position}>
+            {user && (
+                <Marker position={position}>
                 <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+                    Hello, {user.name}.
                 </Popup>
             </Marker>
+            )}
         </MapContainer>
     ))
 };

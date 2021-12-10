@@ -1,7 +1,7 @@
 {
-  "name": "micro-front-end-map",
-  "version": "1.0.0",
-  "description": "Micro front-end map application",
+  "name": "map-application",
+  "version": "1.1.0",
+  "description": "Application that exposes some pieces for external usage",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode=development",
